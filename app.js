@@ -41,7 +41,7 @@ client.on('message', message => {
     const name = message.attachments.first().filename;
     const file = fs.createWriteStream(`./emojis/${name}`);
     var request = https.get(`${url}`, response => response.pipe(file));
-  }
+  } else
 
   if(message.content.startsWith(prefix + 'kott')){
     const bot = message.guild.members.get(client.user.id);
@@ -50,9 +50,11 @@ client.on('message', message => {
     bot.setNickname(user.nickname);
     message.channel.send({files: ['./emojis/kott.jpg']});
     bot.setNickname('Test Bot');
-  }
+  } else
 
-  
+  if(message.content.startsWith(prefix + 'E')){
+    message.channel.send('TBD');
+  }
 
 });
 
