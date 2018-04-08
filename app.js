@@ -52,6 +52,8 @@ client.on('message', message => {
     bot.setNickname('Test Bot');
   }
 
+  
+
 });
 
 client.login(token);
