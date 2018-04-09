@@ -11,17 +11,9 @@ client.on('ready', () => {
   fs.readFile('./emojis/lista.txt', 'utf-8', (err, data) => {
     if(err) return;
     emotki = data.split('\n');
-    //console.log(data);
-    //console.log(emotki);
     emotki.forEach((e, i) => {
       emotki[i] = e.split(' ')
-      //emotki[i][1] = emotki[i][1].slice(0, -1);
     });
-    /*
-    emotki.forEach((e, i) => {
-      console.log(emotki[i])
-    });
-    */
   });
 });
 
