@@ -22,33 +22,25 @@ client.on('message', message => {
 
   if(message.content.startsWith(prefix + 'e')){
     if(args[0] === 'list'){
-      const list = client.emojis.map(e => e.toString());
+      var list = client.emojis.map(e => e.toString());
       message.channel.send(list);
     } else {
-      const name = client.emojis.find('name', `${args[0]}`);
-      message.channel.send(`${name}`);
+      var name = client.emojis.find('name', `${args[0]}`);
+      if(name) message.channel.send(`${name}`);
     }
   } else
 
-  if(message.content.startsWith(prefix + 'add')){
-    const guild = message.guild;
-    guild.createEmoji('./emojis/nz.png', 'BB');
-  } else
-
   if(message.content.startsWith(prefix + 'save')){
-    const url = message.attachments.first().url;
-    const name = message.attachments.first().filename;
-    const file = fs.createWriteStream(`./emojis/${name}`);
+    var url = message.attachments.first().url;
+    var name = message.attachments.first().filename;
+    name = name.split('.').slice(-1);
+    name = `${args[0]}.${name}`;
+    var file = fs.createWriteStream(`./emojis/${name}`);
     var request = https.get(`${url}`, response => response.pipe(file));
   } else
 
   if(message.content.startsWith(prefix + 'kott')){
-    const bot = message.guild.members.get(client.user.id);
-    const user = message.guild.members.get(message.author.id);
-    message.delete()
-    bot.setNickname(user.nickname);
     message.channel.send({files: ['./emojis/kott.jpg']});
-    bot.setNickname('Test Bot');
   } else
 
   if(message.content.startsWith(prefix + 'E')){
