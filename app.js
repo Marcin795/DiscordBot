@@ -43,12 +43,7 @@ client.on('message', message => {
   } else
 
   if(message.content.startsWith(prefix + 'kott')){
-    const bot = message.guild.members.get(client.user.id);
-    const user = message.guild.members.get(message.author.id);
-    message.delete()
-    bot.setNickname(user.nickname);
     message.channel.send({files: ['./emojis/kott.jpg']});
-    bot.setNickname('Test Bot');
   } else
 
   if(message.content.startsWith(prefix + 'E')){
