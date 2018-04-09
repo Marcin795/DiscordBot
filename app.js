@@ -4,9 +4,25 @@ const token = require('./settings.json').token;
 const http = require('http');
 const https = require('https');
 const fs = require('fs');
+var emotki;
 
 client.on('ready', () => {
   console.log('Henlo I works');
+  fs.readFile('./emojis/lista.txt', 'utf-8', (err, data) => {
+    if(err) return;
+    emotki = data.split('\n');
+    //console.log(data);
+    //console.log(emotki);
+    emotki.forEach((e, i) => {
+      emotki[i] = e.split(' ')
+      //emotki[i][1] = emotki[i][1].slice(0, -1);
+    });
+    /*
+    emotki.forEach((e, i) => {
+      console.log(emotki[i])
+    });
+    */
+  });
 });
 
 var prefix = "!";
@@ -31,12 +47,17 @@ client.on('message', message => {
   } else
 
   if(message.content.startsWith(prefix + 'save')){
+    if(!message.attachments.first()) return;
     var url = message.attachments.first().url;
     var name = message.attachments.first().filename;
     name = name.split('.').slice(-1);
     name = `${args[0]}.${name}`;
-    var file = fs.createWriteStream(`./emojis/${name}`);
-    var request = https.get(`${url}`, response => response.pipe(file));
+    fs.appendFile('./emojis/lista.txt', `${args[0]} ${url}\n`, () => {});
+    var tmp = [args[0], url];
+    emotki.push(tmp);
+    //local save
+    //var file = fs.createWriteStream(`./emojis/${name}`);
+    //var request = https.get(`${url}`, response => response.pipe(file));
   } else
 
   if(message.content.startsWith(prefix + 'kott')){
@@ -44,8 +65,11 @@ client.on('message', message => {
   } else
 
   if(message.content.startsWith(prefix + 'E')){
-    message.channel.send('TBD');
-    message.channel.send('Tu Bedo Duze emotki');
+    emotki.forEach(e => {
+      if(e[0] == args[0]) {
+        message.channel.send({files: [e[1]]});
+      }
+    });
   }
 
 });
