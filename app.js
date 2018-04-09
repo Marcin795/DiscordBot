@@ -53,6 +53,7 @@ client.on('message', message => {
 
   if(message.content.startsWith(prefix + 'E')){
     message.channel.send('TBD');
+    message.channel.send('Tu Bedo Duze emotki');
   }
 
 });
