@@ -5,6 +5,10 @@ const http = require('http');
 const https = require('https');
 const fs = require('fs');
 var emotki;
+var wejsciowki;
+var kolokwia;
+var egzaminy;
+var sprawozdania;
 
 client.on('ready', () => {
   console.log('Henlo I works');
@@ -62,8 +66,11 @@ client.on('message', message => {
         message.channel.send({files: [e[1]]});
       }
     });
-  }
+  } else
 
+  if(message.content.startsWitn(prefix + 'jutro')){
+
+  }
 });
 
 client.login(token);
