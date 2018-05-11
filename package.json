@@ -9,6 +9,8 @@
   "author": "Ja",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^11.3.2"
+    "discord.js": "^11.3.2",
+    "npm": "^5.8.0",
+    "sqlite3": "^4.0.0"
   }
 }
