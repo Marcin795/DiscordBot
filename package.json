@@ -1,12 +1,12 @@
 {
-  "name": "testbot",
+  "name": "Krzysztof",
   "version": "0.1.0",
-  "description": "Does no idea what",
+  "description": "KekplanBot",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Ja",
+  "author": "Marcin Szałabski",
   "license": "MIT",
   "dependencies": {
     "console-stamp": "^0.2.6",
